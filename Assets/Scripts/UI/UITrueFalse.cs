@@ -7,7 +7,8 @@ public class UITrueFalse : MonoBehaviour
     [SerializeField] private GameObject[] UIExample;
     [SerializeField] private GameObject[] UIPractice;
 
-    private bool ElementsTrue = true; 
+    private bool ElementsTrue = true;
+
 
     public void AltTrueFalse()
     {

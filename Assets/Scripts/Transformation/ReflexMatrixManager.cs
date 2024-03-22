@@ -20,7 +20,7 @@ public class ReflexMatrixManager : MonoBehaviour
         UpdateReflexMatrix();
     }
 
-    private void UpdateReflexMatrix()
+    public void UpdateReflexMatrix()
     {
         matrixValues = new float[3, 3]
         {

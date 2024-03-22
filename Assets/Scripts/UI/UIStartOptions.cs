@@ -11,18 +11,24 @@ public class NewBehaviourScript : MonoBehaviour
     //Scenes of the different options of the initial panel
 
     [Header("Cross product elements")]
-    [SerializeField] private GameObject[] crossProductElements;
+    [SerializeField] private GameObject[] crossProductElementsInit;
+    [SerializeField] private GameObject[] crossProductElementsEnd;
     [Header("Dot product elements")]
-    [SerializeField] private GameObject[] dotProductElements;
+    [SerializeField] private GameObject[] dotProductElementsInit;
+    [SerializeField] private GameObject[] dotProductElementsEnd;
     [Header("Reflex elements")]
-    [SerializeField] private GameObject[] reflexElements;
+    [SerializeField] private GameObject[] reflexElementsInit;
+    [SerializeField] private GameObject[] reflexElementsEnd;
     [Header("Quaternion elements")]
-    [SerializeField] private GameObject[] quaternionElements;
+    [SerializeField] private GameObject[] quaternionElementsInit;
+    [SerializeField] private GameObject[] quaternionElementsEnd;
     [Header("Matrix transform elements")]
-    [SerializeField] private GameObject[] matrixTransformElements;
+    [SerializeField] private GameObject[] matrixTransformElementsInit;
+    [SerializeField] private GameObject[] matrixTransformElementsEnd;
     [Header("Rotation elements")]
-    [SerializeField] private GameObject[] rotationElements;
-   
+    [SerializeField] private GameObject[] rotationElementsInit;
+    [SerializeField] private GameObject[] rotationElementsEnd;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,36 +37,42 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void TrueCrossProductElements()
     {
-        TrueElements(crossProductElements);
+        TrueElements(crossProductElementsInit);
     }
     public void TrueDotProductElements()
     {
-        TrueElements(dotProductElements);
+        TrueElements(dotProductElementsInit);
     }
     public void TrueReflexElements()
     {
-        TrueElements(reflexElements);
+        TrueElements(reflexElementsInit);
     }
     public void TrueQuaternionElements()
     {
-        TrueElements(quaternionElements);
+        TrueElements(quaternionElementsInit);
     }
     public void TrueMatrixTransformElements()
     {
-        TrueElements(matrixTransformElements);
+        TrueElements(matrixTransformElementsInit);
     }
     public void TrueRotationElements()
     {
-        TrueElements(rotationElements);
+        TrueElements(rotationElementsInit);
     }
     public void BackElements()
     {
-        Back(rotationElements);
-        Back(matrixTransformElements);
-        Back(quaternionElements);
-        Back(reflexElements);
-        Back(dotProductElements);
-        Back(crossProductElements);
+        Back(rotationElementsInit);
+        Back(rotationElementsEnd);
+        Back(matrixTransformElementsInit);
+        Back(matrixTransformElementsEnd);
+        Back(quaternionElementsInit);
+        Back(quaternionElementsEnd);
+        Back(reflexElementsInit);
+        Back(reflexElementsEnd);
+        Back(dotProductElementsInit);
+        Back(dotProductElementsEnd);
+        Back(crossProductElementsInit);
+        Back(crossProductElementsEnd);
     }
 
     private void TrueElements(GameObject[] elementos)

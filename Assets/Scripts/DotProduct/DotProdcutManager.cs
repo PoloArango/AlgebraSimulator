@@ -16,7 +16,7 @@ public class DotProdcutManager : MonoBehaviour
         Vector3 v2 = Vector2.transform.position;
         Vector3 c = Vector3.zero;
 
-        v1dotv2Txt.text = "v1.v2=" + DotProduct(v1, v2, c);
+        v1dotv2Txt.text = "V1.V2 = " + DotProduct(v1, v2, c);
     }
 
     /// <summary>
