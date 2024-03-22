@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class RotationManager : MonoBehaviour
     [SerializeField]
     [Range(0, 360)]
     float angle = 0.0f;
+    [SerializeField] TMP_Text AngleTxt;
     Matrix2x2 RotationMatrix = new Matrix2x2(new float[2, 2]{
         {1,0},
         {0,1}
@@ -32,6 +34,7 @@ public class RotationManager : MonoBehaviour
 
         // actualizo el angle desde el UI
         angle = angleSlider.value;
+        AngleTxt.text = "Angulo " + angle + " °";
 
         // calculos para la matriz
         float cos = Mathf.Cos(angle*Mathf.PI/180f);
