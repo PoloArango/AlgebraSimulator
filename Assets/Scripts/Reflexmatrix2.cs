@@ -27,18 +27,18 @@ public class Reflexmatrix2: MonoBehaviour
 
     public void UpdateReflexMatrix()
     {
-        float row1X = XInputField.text == "" ? 1 : Int32.Parse(XInputField.text);
+        float row1X = XInputField.text == "" ? 1 : float.Parse(XInputField.text);
         float row1Y = 0;
         float row1Z = 0;
 
 
         float row2X = 0;
-        float row2Y = YInputField.text == "" ? 1 : Int32.Parse(YInputField.text);
+        float row2Y = YInputField.text == "" ? 1 : float.Parse(YInputField.text);
         float row2Z = 0;
 
         float row3X = 0;
         float row3Y = 0;
-        float row3Z = ZInputField.text == "" ? 1 : Int32.Parse(ZInputField.text);
+        float row3Z = ZInputField.text == "" ? 1 : float.Parse(ZInputField.text);
 
         matrixValues = new float[3, 3]
         {

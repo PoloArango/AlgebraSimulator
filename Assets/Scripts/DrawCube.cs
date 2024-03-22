@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,17 +9,26 @@ public class DrawCube : MonoBehaviour
 {
     QuaternionManager myQuaternion = new();
     [Header("Quaterion component")]
-    [SerializeField]
-    [Range(0, 360)]
+    [SerializeField] Slider angleSlider;
+    [SerializeField] TMP_Text AngleTxt;
     float angle = 0;
-    [SerializeField] Vector3 axis = new(0, 1, 0);
+    public TMP_InputField XInputField;
+    public TMP_InputField YInputField;
+    public TMP_InputField ZInputField;
+    Vector3 axis = new Vector3(0, 0, 0);
 
     [Header("Scale component")]
+    public Slider sliderScaleX;
+    public Slider sliderScaleY;
+    public Slider sliderScaleZ;
     [SerializeField] Vector3 scale = Vector3.one;
     ScaleManager myScale = new();
 
     [Header("Position component")]
-    [SerializeField] Vector3 position = Vector3.zero;
+    public Slider sliderX;
+    public Slider sliderY;
+    public Slider sliderZ;
+    Vector3 position = Vector3.zero;
     PositionManager myPos = new();
 
     private LineRenderer lineRenderer;
@@ -42,12 +53,55 @@ public class DrawCube : MonoBehaviour
 
     private void Update()
     {
+        axis = UpdateReflexMatrix();
+        position = UpdatePositionSlider();
+        scale = UpdateScaleSlider();
+
+        angle = angleSlider.value;
+        AngleTxt.text = "Angulo " + angle + " °";
+
         RestartCubePosition();
         RotationCube();
         ResizeCube();
         SetPosition();
         DrawCube3D();
     }
+
+    public Vector3 UpdateReflexMatrix()
+    {
+        float inputX = XInputField.text == "" ? 0 : float.Parse(XInputField.text);
+        float inputY = YInputField.text == "" ? 0 : float.Parse(YInputField.text);
+        float inputZ = ZInputField.text == "" ? 0 : float.Parse(ZInputField.text);
+
+        Vector3 vectorOut = new Vector3(inputX, inputY, inputZ);
+
+        return vectorOut;
+    }
+
+    public Vector3 UpdatePositionSlider()
+    {
+        float newX = sliderX.value;
+        float newY = sliderY.value;
+        float newZ = sliderZ.value;
+
+        Vector3 vectorOut = new Vector3(newX, newY, newZ);
+
+        return vectorOut;
+    }
+
+    public Vector3 UpdateScaleSlider()
+    {
+        float newX = sliderScaleX.value;
+        float newY = sliderScaleY.value;
+        float newZ = sliderScaleZ.value;
+
+        Vector3 vectorOut = new Vector3(newX, newY, newZ);
+
+        return vectorOut;
+    }
+
+
+
 
     private void RestartCubePosition()
     {
