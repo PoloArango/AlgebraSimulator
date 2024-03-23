@@ -92,5 +92,8 @@ public class NewBehaviourScript : MonoBehaviour
         }
         initialPanel.SetActive(true);
     }
-
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
