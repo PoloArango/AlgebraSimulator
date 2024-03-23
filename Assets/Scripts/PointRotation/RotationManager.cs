@@ -6,48 +6,59 @@ using UnityEngine.UI;
 
 public class RotationManager : MonoBehaviour
 {
+    // Ángulo de rotación, ajustable desde el Inspector
     [SerializeField]
     [Range(0, 360)]
-    float angle = 0.0f;
-    [SerializeField] TMP_Text AngleTxt;
-    Matrix2x2 RotationMatrix = new Matrix2x2(new float[2, 2]{
-        {1,0},
-        {0,1}
+    private float angle = 0.0f;
+
+    // Referencia al componente TMP_Text para mostrar el ángulo
+    [SerializeField]
+    private TMP_Text AngleTxt;
+
+    // Matriz de rotación
+    private Matrix2x2 RotationMatrix = new Matrix2x2(new float[2, 2]{
+        {1, 0},
+        {0, 1}
     });
 
-    [SerializeField] Slider angleSlider; 
+    // Referencia al componente Slider para ajustar el ángulo
+    [SerializeField]
+    private Slider angleSlider;
 
-    Vector2 initPos = new Vector2();
+    // Posición inicial del objeto
+    private Vector2 initPos = new Vector2();
 
+    // Método llamado al inicio
     private void Start()
     {
+        // Almacena la posición inicial del objeto
         initPos = transform.position;
     }
 
     private void Update()
     {
-        // reinicio la pos inicial
+        // Reinicia la posición del objeto
         this.transform.position = initPos;
 
-        // pos de mi punto
+        // Obtiene la posición del objeto en forma de vector 2D
         Vector2 p = transform.position;
 
-        // actualizo el angle desde el UI
+        // Actualiza el ángulo desde el valor del Slider en la interfaz de usuario
         angle = angleSlider.value;
         AngleTxt.text = "Angulo " + angle + " °";
 
-        // calculos para la matriz
-        float cos = Mathf.Cos(angle*Mathf.PI/180f);
-        float sin = Mathf.Sin(angle*Mathf.PI/180f);
+        // Calcula el coseno y el seno del ángulo (en radianes)
+        float cos = Mathf.Cos(angle * Mathf.PI / 180f);
+        float sin = Mathf.Sin(angle * Mathf.PI / 180f);
 
-        // actualizo la matriz
+        // Actualiza la matriz de rotación con los nuevos valores
         RotationMatrix.UpdateMatrix(new float[2, 2]
         {
             {cos, -sin},
             {sin, cos}
         });
 
-        // calculo la nueva ubicación de mi punto
+        // Calcula la nueva posición del objeto después de la rotación y la actualiza
         this.transform.position = RotationMatrix.MultiplyVector(p);
     }
 }
